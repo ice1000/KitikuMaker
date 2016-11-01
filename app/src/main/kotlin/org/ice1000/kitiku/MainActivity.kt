@@ -37,7 +37,8 @@ class MainActivity : BaseActivity() {
 	inner class KitikuAdapter() : RecyclerView.Adapter<KitikuViewHolder>() {
 		override fun getItemCount() = kitikuList.size
 		override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int) =
-				KitikuViewHolder(LayoutInflater.from(this@MainActivity).inflate(0, parent))
+				KitikuViewHolder(LayoutInflater.from(this@MainActivity)
+						.inflate(R.layout.kitiku_item, null))
 
 		override fun onBindViewHolder(holder: KitikuViewHolder?, position: Int) {
 			holder?.init(position)
@@ -60,8 +61,8 @@ class MainActivity : BaseActivity() {
 					Dialog(this@MainActivity,
 							str(R.string.oops),
 							str(R.string.crash_message)).apply {
-						buttonCancel.visibility = View.GONE
-						buttonAccept.text = str(R.string.ok)
+						buttonCancel?.visibility = View.GONE
+						buttonAccept?.text = str(R.string.ok)
 						setOnAcceptButtonClickListener { view ->
 							dismiss()
 //							finish()

@@ -1,6 +1,6 @@
 <resources>
 	<string name="app_name">Kitiku</string>
-	<string name="title_activity_main">MainActivity</string>
+	<string name="title_activity_main">Make your Kitiku!</string>
 
 	<string name="oops">Ooooops!</string>
 	<string name="crash_message">Something unexpected has occurred.\nPlease restart the app, or send a feedback to the developer.\nError code:</string>
