@@ -54,3 +54,6 @@ val kitikuList = listOf(
         Pair(R.drawable.have_jie_cao, R.raw.sound_have_jie_cao),
         Pair(R.drawable.i_feel_so_good, R.raw.sound_i_feel_so_good)
 )
+
+val THEME_KEY = "THEME_KEY"
+

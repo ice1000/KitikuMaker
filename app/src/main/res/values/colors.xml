@@ -4,4 +4,8 @@
 	<color name="colorPrimaryDark">#303F9F</color>
 	<color name="colorAccent">#7c40ff</color>
 	<color name="colorIntelliJ">#2B2B2B</color>
+	<color name="colorIntelliJLight">#505050</color>
+	<color name="blue">#1e9ce6</color>
+	<color name="blueDark">#1e6ee6</color>
+	<color name="gray">#cfcfcf</color>
 </resources>

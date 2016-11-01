@@ -2,4 +2,6 @@
 <resources>
 	<attr name="textColor" format="reference|color" />
 	<attr name="buttonColor" format="reference|color" />
+	<attr name="colorPrim" format="reference|color" />
+	<attr name="colorPrimDark" format="reference|color" />
 </resources>

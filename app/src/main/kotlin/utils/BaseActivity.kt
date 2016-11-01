@@ -2,7 +2,6 @@ package utils
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.net.Uri
@@ -79,31 +78,13 @@ open class BaseActivity : AppCompatActivity() {
 	}
 
 	/**
-	 * insert a value in2 SharedPreference
-	 * any types of value is accepted.
-	 *
-	 * Will be smart casted.
+	 * @see save
 	 */
-	fun String.save(value: Any) {
-		val editor = openPreference().edit()
-		if (value is Int) editor.putInt(this, value)
-		else if (value is Float) editor.putFloat(this, value)
-		else if (value is Long) editor.putLong(this, value)
-		else if (value is Boolean) editor.putBoolean(this, value)
-		else if (value is String) editor.putString(this, value)
-		else throw Exception("not supported type")
-		editor.apply()
-	}
+	fun String.save(value: Any) = save(this, value)
 
-	fun String.readString(default: String = "") = openPreference().getString(this, default) ?: ""
-	fun String.readInt(default: Int = 0) = openPreference().getInt(this, default)
-	fun String.readBoolean(default: Boolean = false) = openPreference().getBoolean(this, default)
+	fun String.readString(default: String = "") = readString(this, default)
+	fun String.readInt(default: Int = 0) = readInt(this, default)
+	fun String.readBoolean(default: Boolean = false) = readBoolean(this, default)
 
 	fun str(id: Int) = resources.getString(id)
-
-	/**
-	 * @return a SharedPreference
-	 */
-	private fun openPreference(): SharedPreferences =
-			getSharedPreferences("MainPreference", MODE_ENABLE_WRITE_AHEAD_LOGGING)
 }

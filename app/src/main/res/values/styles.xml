@@ -14,17 +14,20 @@
 	</style>
 
 	<style name="blue" parent="AppTheme.NoActionBar">
-		<item name="buttonColor">#1e9ce6</item>
+		<item name="colorPrim">@color/blue</item>
+		<item name="colorPrimDark">@color/blueDark</item>
+		<item name="buttonColor">@color/blue</item>
 		<item name="textColor">@color/colorIntelliJ</item>
 	</style>
 
 	<style name="night" parent="AppTheme.NoActionBar">
-		<item name="buttonColor">@color/colorIntelliJ</item>
-		<item name="textColor">#cfcfcf</item>
+		<item name="colorPrim">@color/colorIntelliJLight</item>
+		<item name="colorPrimDark">@color/colorIntelliJ</item>
+		<item name="buttonColor">@color/colorIntelliJLight</item>
+		<item name="textColor">@color/gray</item>
 	</style>
 
 	<style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
 	<style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
-
 </resources>

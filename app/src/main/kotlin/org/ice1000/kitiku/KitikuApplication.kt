@@ -3,6 +3,8 @@ package org.ice1000.kitiku
 import android.app.Application
 import com.nightfarmer.themer.Themer
 import utils.Audio
+import utils.THEME_KEY
+import utils.readInt
 import kotlin.concurrent.thread
 
 /**
@@ -14,6 +16,6 @@ class KitikuApplication() : Application() {
 	override fun onCreate() {
 		super.onCreate()
 		thread { Audio.init(this@KitikuApplication) }
-		Themer.init(this)
+		Themer.init(this, readInt(THEME_KEY, R.style.blue))
 	}
 }
