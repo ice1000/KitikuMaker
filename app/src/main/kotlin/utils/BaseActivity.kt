@@ -9,8 +9,6 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.DisplayMetrics
 import android.util.Log
-import org.jetbrains.anko.async
-import org.jetbrains.anko.uiThread
 
 /**
  * Created by ice1000 on 2016/6/4.
@@ -18,8 +16,6 @@ import org.jetbrains.anko.uiThread
  * @author ice1000
  */
 open class BaseActivity : AppCompatActivity() {
-
-	protected val URL = "URL"
 
 	/**
 	 * if this value is null,
@@ -43,38 +39,6 @@ open class BaseActivity : AppCompatActivity() {
 	protected fun checkNetwork(): Boolean {
 		Log.v("not important", "connection? = ${connection ?: "no network found!"}")
 		return connection != null && connection!!.isConnected
-	}
-
-	protected val DEFAULT_VALUE = "DEFAULT_VALUE"
-
-	/**
-	 * this will cache the data into SharedPreference
-	 * next time when the network is invalid, it will return the data
-	 * stored in the SharedPreference.
-	 *
-	 * this method extended String.
-	 */
-	fun String.webResource(submit: (String) -> Unit, default: String = DEFAULT_VALUE) {
-		var ret = ""
-		async() {
-			ret = readString(default)
-			uiThread { submit(ret) }
-//        Log.i("important", "ret = $ret")
-		}
-		Log.i(this@BaseActivity.toString(), this@webResource)
-		if (ret != DEFAULT_VALUE && !checkNetwork()) {
-			async() {
-				Log.i("important", "linking to SharedPreference")
-				uiThread { submit(ret) }
-			}
-		} else {
-			async() {
-				Log.i("important", "linking to web")
-				ret = java.net.URL(this@webResource).readText(Charsets.UTF_8)
-				uiThread { submit(ret) }
-				save(ret)
-			}
-		}
 	}
 
 	/**

@@ -1,11 +1,11 @@
 package org.ice1000.kitiku
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_launch.*
 import org.jetbrains.anko.startActivity
+import utils.BaseActivity
 
-class LaunchActivity : AppCompatActivity() {
+class LaunchActivity : BaseActivity() {
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)

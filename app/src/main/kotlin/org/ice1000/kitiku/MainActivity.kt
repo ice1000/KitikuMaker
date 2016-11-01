@@ -36,13 +36,12 @@ class MainActivity : BaseActivity() {
 
 	inner class KitikuAdapter() : RecyclerView.Adapter<KitikuViewHolder>() {
 		override fun getItemCount() = kitikuList.size
+		override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int) =
+				KitikuViewHolder(LayoutInflater.from(this@MainActivity).inflate(0, parent))
+
 		override fun onBindViewHolder(holder: KitikuViewHolder?, position: Int) {
 			holder?.init(position)
 		}
-
-		override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int) = KitikuViewHolder(
-				LayoutInflater.from(this@MainActivity).inflate(0, parent)
-		)
 	}
 
 	inner class KitikuViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
