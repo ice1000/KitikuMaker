@@ -14,7 +14,9 @@ import java.util.*
 
 object Audio {
 	var loadedData: List<Int> = emptyList()
-	val rand = Random(System.currentTimeMillis())
+	private val rand = Random(System.currentTimeMillis())
+	val random: Int
+		get() = rand.nextInt(loadedData.size)
 	var soundPool = SoundPool(5, AudioManager.STREAM_MUSIC, 1)
 	fun init(context: Context) {
 		val list = ArrayList<Int>(50)
@@ -30,7 +32,7 @@ object Audio {
 	}
 
 	fun randomPlay() {
-		playSound(rand.nextInt(loadedData.size))
+		playSound(random)
 	}
 
 	operator fun get(int: Int) = loadedData[int]

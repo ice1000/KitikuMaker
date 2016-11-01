@@ -9,13 +9,13 @@ import android.view.*
 import com.gc.materialdesign.widgets.Dialog
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
+import org.jetbrains.anko.async
 import org.jetbrains.anko.find
 import org.jetbrains.anko.startActivity
 import utils.Audio
 import utils.BaseActivity
 import utils.kitikuList
 import utils.unless
-import kotlin.concurrent.thread
 
 @Suppress("DEPRECATION")
 class MainActivity : BaseActivity() {
@@ -96,11 +96,17 @@ class MainActivity : BaseActivity() {
 		item?.let { item ->
 			when (item.itemId) {
 				MENU_ID_SETTINGS -> startActivity<SettingsActivity>()
-				MENU_ID_SHUFFLE -> thread {
+				MENU_ID_SHUFFLE -> async() {
 					var i = 100
-					while (i-- > 0) {
+					var j: Int
+					while (i --> 0) {
+						j = Audio.random
+						Audio.playSound(j)
+//						recycler_main.getChildAt(j).find<AppCompatImageView>(R.id.image_recycler_main)
+//								.imageAlpha = 0x88
 						Thread.sleep(50)
-						Audio.randomPlay()
+//						recycler_main.getChildAt(j).find<AppCompatImageView>(R.id.image_recycler_main)
+//								.imageAlpha = 0xff
 					}
 				}
 				else -> {
