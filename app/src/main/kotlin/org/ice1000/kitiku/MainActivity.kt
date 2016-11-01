@@ -1,18 +1,17 @@
 package org.ice1000.kitiku
 
-import android.graphics.PorterDuff
 import android.os.Bundle
 import android.support.v7.widget.AppCompatImageView
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.util.Log
+import android.view.*
 import com.gc.materialdesign.widgets.Dialog
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import org.jetbrains.anko.find
+import org.jetbrains.anko.startActivity
 import utils.Audio
 import utils.BaseActivity
 import utils.kitikuList
@@ -50,8 +49,6 @@ class MainActivity : BaseActivity() {
 
 		fun init(position: Int) {
 			image.setImageResource(kitikuList[position].first)
-			image.supportBackgroundTintMode = PorterDuff.Mode.SRC_IN
-			image.supportBackgroundTintList = colorStateList()
 			image.setOnClickListener { view ->
 				unless(Audio.playSound(position)) {
 					Dialog(this@MainActivity,
@@ -67,6 +64,38 @@ class MainActivity : BaseActivity() {
 					}
 				}
 			}
+			image.setOnTouchListener { view, event ->
+				Log.v(this.toString(), event.action.toString())
+				when (event.action) {
+					MotionEvent.ACTION_DOWN,
+					MotionEvent.ACTION_MOVE -> {
+						image.alpha = 0.5f
+					}
+					else -> {
+						image.alpha = 1f
+					}
+				}
+				return@setOnTouchListener false
+			}
+//			runMaterial {
+//				view.setBackgroundDrawable(resources.getDrawable(R.drawable.ripple_background))
+//			}
 		}
+	}
+
+	val MENU_ID_SETTINGS = 1
+
+	override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+		menu?.add(Menu.NONE, MENU_ID_SETTINGS, 1, R.string.settings)
+		return true
+	}
+
+	override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+		item?.let { item ->
+			when (item.itemId) {
+				MENU_ID_SETTINGS -> startActivity<SettingsActivity>()
+			}
+		}
+		return true
 	}
 }

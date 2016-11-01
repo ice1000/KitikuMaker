@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.DisplayMetrics
@@ -52,6 +53,12 @@ open class BaseActivity : AppCompatActivity() {
 	fun String.readString(default: String = "") = readString(this, default)
 	fun String.readInt(default: Int = 0) = readInt(this, default)
 	fun String.readBoolean(default: Boolean = false) = readBoolean(this, default)
+
+	fun runMaterial(block: () -> Unit) {
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+			block()
+		}
+	}
 
 	fun str(id: Int) = resources.getString(id)
 }

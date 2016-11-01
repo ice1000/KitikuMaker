@@ -1,6 +1,5 @@
 package org.ice1000.kitiku
 
-import android.graphics.PorterDuff
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_launch.*
 import org.jetbrains.anko.startActivity
@@ -16,10 +15,11 @@ class LaunchActivity : BaseActivity() {
 		thread {
 			Audio.init(this@LaunchActivity)
 		}
-		listOf(start_button_launch,
-				settings_button_launch).forEach { view ->
-			view.supportBackgroundTintMode = PorterDuff.Mode.ADD
-			view.supportBackgroundTintList = colorStateList()
+		runMaterial {
+			listOf(start_button_launch,
+					settings_button_launch).forEach { view ->
+//				view.background = resources.getDrawable(R.drawable.ripple_background)
+			}
 		}
 		start_button_launch.setOnClickListener { view ->
 			startActivity<MainActivity>()

@@ -6,6 +6,7 @@ package utils
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.os.Build
 import android.support.v7.app.AppCompatActivity
 
 fun unless(condition: Boolean, block: () -> Unit) {
@@ -38,3 +39,4 @@ fun Context.openPreference(): SharedPreferences =
 fun Context.readString(key: String, default: String = "") = openPreference().getString(key, default) ?: ""
 fun Context.readInt(key: String, default: Int = 0) = openPreference().getInt(key, default)
 fun Context.readBoolean(key: String, default: Boolean = false) = openPreference().getBoolean(key, default)
+
