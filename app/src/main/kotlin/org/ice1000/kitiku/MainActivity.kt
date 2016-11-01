@@ -1,6 +1,5 @@
 package org.ice1000.kitiku
 
-import android.content.res.ColorStateList
 import android.graphics.PorterDuff
 import android.os.Bundle
 import android.support.v7.widget.AppCompatImageView
@@ -22,14 +21,11 @@ import utils.unless
 @Suppress("DEPRECATION")
 class MainActivity : BaseActivity() {
 
-	lateinit var colorStateList: ColorStateList
-
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_main)
 		setSupportActionBar(toolbar_main)
-		colorStateList = resources.getColorStateList(R.color.colorIntelliJLight)
-		recycler_main.layoutManager = GridLayoutManager(this, dm.widthPixels / 400)
+		recycler_main.layoutManager = GridLayoutManager(this, dm.widthPixels / 256)
 		recycler_main.adapter = KitikuAdapter()
 		recycler_main.itemAnimator = DefaultItemAnimator()
 	}
@@ -54,8 +50,8 @@ class MainActivity : BaseActivity() {
 
 		fun init(position: Int) {
 			image.setImageResource(kitikuList[position].first)
-			image.supportBackgroundTintList = colorStateList
 			image.supportBackgroundTintMode = PorterDuff.Mode.SRC_IN
+			image.supportBackgroundTintList = colorStateList()
 			image.setOnClickListener { view ->
 				unless(Audio.playSound(position)) {
 					Dialog(this@MainActivity,

@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.DisplayMetrics
 import android.util.Log
+import org.ice1000.kitiku.R
 
 /**
  * Created by ice1000 on 2016/6/4.
@@ -26,6 +27,8 @@ open class BaseActivity : AppCompatActivity() {
 				as ConnectivityManager).activeNetworkInfo
 
 	val dm = DisplayMetrics()
+
+	fun colorStateList(id: Int = R.color.colorIntelliJLight) = resources.getColorStateList(id)!!
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)

@@ -18,6 +18,7 @@ object Audio {
     fun init(context: Context) {
         val list = ArrayList<Int>(50)
         kitikuList.forEach { p -> list.add(soundPool.load(context, p.second, 1)) }
+        loadedData = list
     }
 
     fun playSound(soundId: Int): Boolean {

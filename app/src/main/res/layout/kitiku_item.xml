@@ -7,6 +7,7 @@
 
 	<android.support.v7.widget.AppCompatImageView
 		android:id="@+id/image_recycler_main"
+		android:layout_margin="@dimen/item_margin"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"/>
 </LinearLayout>

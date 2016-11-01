@@ -10,13 +10,22 @@
 	android:paddingTop="@dimen/activity_vertical_margin"
 	tools:context="org.ice1000.kitiku.LaunchActivity">
 
-	<com.gc.materialdesign.views.ButtonRectangle
+	<android.support.v7.widget.AppCompatButton
 		android:id="@+id/start_button_launch"
 		android:text="@string/start"
-		android:color="?attr/buttonColor"
+		android:background="?attr/buttonColor"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_centerVertical="true"
+		android:layout_centerHorizontal="true"/>
+
+	<android.support.v7.widget.AppCompatButton
+		android:id="@+id/settings_button_launch"
+		android:text="@string/settings"
+		android:background="?attr/buttonColor"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/start_button_launch"
 		android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

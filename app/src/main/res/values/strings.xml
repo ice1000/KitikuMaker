@@ -6,4 +6,5 @@
 	<string name="crash_message">Something unexpected has occurred.\nPlease restart the app, or send a feedback to the developer.\nError code:</string>
 	<string name="ok">OK</string>
 	<string name="start">Start!</string>
+	<string name="settings">Settings</string>
 </resources>
