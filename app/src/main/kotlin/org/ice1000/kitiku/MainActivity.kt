@@ -5,7 +5,6 @@ import android.support.v7.widget.AppCompatImageView
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.*
 import com.gc.materialdesign.widgets.Dialog
 import kotlinx.android.synthetic.main.activity_main.*
@@ -16,6 +15,7 @@ import utils.Audio
 import utils.BaseActivity
 import utils.kitikuList
 import utils.unless
+import kotlin.concurrent.thread
 
 @Suppress("DEPRECATION")
 class MainActivity : BaseActivity() {
@@ -65,7 +65,7 @@ class MainActivity : BaseActivity() {
 				}
 			}
 			image.setOnTouchListener { view, event ->
-				Log.v(this.toString(), event.action.toString())
+//				Log.v(this.toString(), event.action.toString())
 				when (event.action) {
 					MotionEvent.ACTION_DOWN,
 					MotionEvent.ACTION_MOVE -> {
@@ -84,9 +84,11 @@ class MainActivity : BaseActivity() {
 	}
 
 	val MENU_ID_SETTINGS = 1
+	val MENU_ID_SHUFFLE = 2
 
 	override fun onCreateOptionsMenu(menu: Menu?): Boolean {
 		menu?.add(Menu.NONE, MENU_ID_SETTINGS, 1, R.string.settings)
+		menu?.add(Menu.NONE, MENU_ID_SHUFFLE, 1, R.string.shuffle)
 		return true
 	}
 
@@ -94,6 +96,15 @@ class MainActivity : BaseActivity() {
 		item?.let { item ->
 			when (item.itemId) {
 				MENU_ID_SETTINGS -> startActivity<SettingsActivity>()
+				MENU_ID_SHUFFLE -> thread {
+					var i = 100
+					while (i-- > 0) {
+						Thread.sleep(50)
+						Audio.randomPlay()
+					}
+				}
+				else -> {
+				}
 			}
 		}
 		return true

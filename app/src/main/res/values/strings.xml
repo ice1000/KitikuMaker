@@ -1,5 +1,5 @@
 <resources>
-	<string name="app_name">Kitiku</string>
+	<string name="app_name">Kitiku Maker</string>
 	<string name="title_activity_main">Make your Kitiku!</string>
 
 	<string name="oops">Ooooops!</string>
@@ -7,4 +7,5 @@
 	<string name="ok">OK</string>
 	<string name="start">Start!</string>
 	<string name="settings">Settings</string>
+	<string name="shuffle">Shuffle!(Excited)</string>
 </resources>

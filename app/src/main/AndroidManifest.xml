@@ -11,10 +11,10 @@
 		android:theme="@style/AppTheme">
 		<activity
 			android:name=".LaunchActivity"
+			android:theme="@style/AppTheme.NoActionBar"
 			android:launchMode="singleInstance">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN"/>
-
 				<category android:name="android.intent.category.DEFAULT"/>
 			</intent-filter>
 		</activity>
@@ -24,7 +24,11 @@
 			android:launchMode="singleInstance"
 			android:theme="@style/AppTheme.NoActionBar">
 		</activity>
-		<activity android:name=".SettingsActivity">
+		<activity
+			android:launchMode="singleInstance"
+			android:label="@string/settings"
+			android:theme="@style/AppTheme.NoActionBar"
+			android:name=".SettingsActivity">
 		</activity>
 	</application>
 

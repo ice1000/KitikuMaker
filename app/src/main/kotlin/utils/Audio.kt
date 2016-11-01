@@ -13,20 +13,25 @@ import java.util.*
  */
 
 object Audio {
-    var loadedData: List<Int> = emptyList()
-    var soundPool = SoundPool(5, AudioManager.STREAM_MUSIC, 1)
-    fun init(context: Context) {
-        val list = ArrayList<Int>(50)
-        kitikuList.forEach { p -> list.add(soundPool.load(context, p.second, 1)) }
-        loadedData = list
-    }
+	var loadedData: List<Int> = emptyList()
+	val rand = Random(System.currentTimeMillis())
+	var soundPool = SoundPool(5, AudioManager.STREAM_MUSIC, 1)
+	fun init(context: Context) {
+		val list = ArrayList<Int>(50)
+		kitikuList.forEach { p -> list.add(soundPool.load(context, p.second, 1)) }
+		loadedData = list
+	}
 
-    fun playSound(soundId: Int): Boolean {
-        if (soundId < loadedData.size)
-            soundPool.play(loadedData[soundId], 1f, 1f, 0, 0, 1f)
-        Log.d("233", "playing $soundId")
-        return soundId < loadedData.size
-    }
+	fun playSound(soundId: Int): Boolean {
+		if (soundId < loadedData.size)
+			soundPool.play(loadedData[soundId], 1f, 1f, 0, 0, 1f)
+		Log.d("233", "playing $soundId")
+		return soundId < loadedData.size
+	}
 
-    operator fun get(int: Int) = loadedData[int]
+	fun randomPlay() {
+		playSound(rand.nextInt(loadedData.size))
+	}
+
+	operator fun get(int: Int) = loadedData[int]
 }
