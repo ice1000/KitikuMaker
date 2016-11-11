@@ -6,7 +6,7 @@ buildscript {
 		jcenter()
 	}
 	dependencies {
-		classpath 'com.android.tools.build:gradle:2.1.2'
+		classpath 'com.android.tools.build:gradle:3.1'
 		classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 		// NOTE: Do not place your application dependencies here; they belong
 		// in the individual module build.gradle files
@@ -15,11 +15,13 @@ buildscript {
 
 allprojects {
 	repositories {
-		maven { url "http://maven.aliyun.com/nexus/content/repositories/central" }
-		maven { url "https://jitpack.io" }
-		mavenCentral()
-		mavenLocal()
 		jcenter()
+		mavenLocal()
+//		mavenCentral()
+		maven { url "http://maven.net.cn/content/groups/public/" }
+//		maven { url "http://maven.oschina.net/content/groups/public/" }
+//		maven { url "http://repo2.maven.org/maven2/" }
+//		maven { url "https://jitpack.io" }
 	}
 }
 
